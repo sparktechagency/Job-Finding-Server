@@ -2,6 +2,7 @@
 
 const allRoles = {
   user: ["common", "user"],
+  compnay: ["common", "compnay"],
   admin: ["common", "commonAdmin", "admin"],
   superAdmin: ["common", "commonAdmin", "superAdmin"],
 };
