@@ -104,14 +104,27 @@ const updateUser = catchAsync(async (req, res) => {
 });
 
 const updateProfile = catchAsync(async (req, res) => {
-  if (req.file) {
-    req.body.image = `/uploads/users/${req.file.filename}`;
+
+
+  console.log(req.files);
+
+  if (req.files.image) {
+    req.body.image = `/uploads/users/${req.files.image[0].filename}`;
+  }
+  if (req.files.myCv) {
+    req.body.myCv = `/uploads/users/${req.files.myCv[0].filename}`;
+  }
+  if (req.files.portfolio) {
+    req.body.portfolio = `/uploads/users/${req.files.portfolio[0].filename}`;
   }
 
   // Set fullName if firstName or lastName is provided
   if (!req.body.fullName && (req.body.firstName || req.body.lastName)) {
     req.body.fullName = `${req.body.firstName || ''} ${req.body.lastName || ''}`.trim();
   }
+
+
+  console.log(req.body);
 
   const user = await userService.updateUserById(req.user.id, req.body);
 

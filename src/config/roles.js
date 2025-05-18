@@ -1,10 +1,10 @@
 // An application depends on what roles it will have.
 
 const allRoles = {
-  user: ["common", "user"],
-  compnay: ["common", "compnay"],
-  admin: ["common", "commonAdmin", "admin"],
-  superAdmin: ["common", "commonAdmin", "superAdmin"],
+  user: ["common", "commonUserCompany", "user"],
+  compnay: ["common", "commonUserCompany", "commonCompanyAdmin", "compnay"],
+  admin: ["common", "commonAdmin", "commonCompanyAdmin", "admin"],
+  superAdmin: ["common", "commonAdmin", "commonCompanyAdmin", "superAdmin"],
 };
 
 const roles = Object.keys(allRoles);

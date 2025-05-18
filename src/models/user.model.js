@@ -37,7 +37,7 @@ const userSchema = mongoose.Schema(
     image: {
       type: String,
       required: false,
-      default: null
+      default: "/uploads/users/user.png"
     },
     password: {
       type: String,
@@ -53,6 +53,8 @@ const userSchema = mongoose.Schema(
       },
       private: true,
     },
+
+
     role: {
       type: String,
       enum: roles,
@@ -67,6 +69,178 @@ const userSchema = mongoose.Schema(
       required: false,
       default: null
     },
+    address: {
+      type: String,
+      required: false,
+      default: null
+    },
+    subscriptionExprireDate: {
+      type: Date,
+      required: false,
+      default: null
+    },
+    subscriptionId: {
+      type: String,
+      required: false,
+      default: null
+    },
+    isSubscriptionTaken: {
+      type: Boolean,
+      default: false
+    },
+    applicationJobs: {
+      type: Array,
+      required: false,
+      default: []
+    },
+    shortlistedJobs: {
+      type: Array,
+      required: false,
+      default: []
+    },
+    bookmarkedJobs: {
+      type: Array,
+      required: false,
+      default: []
+    },
+
+    gender: {
+      type: String,
+      required: false,
+      default: null
+    },
+    nationality: {
+      type: String,
+      required: false,
+      default: null
+    },
+    myCv: {
+      type: String,
+      required: false,
+      default: null
+    },
+    portfolio: {
+      type: String,
+      required: false,
+      default: null
+    },
+    universityName: {
+      type: String,
+      required: false,
+      default: null
+    },
+    passingYear: {
+      type: Date,
+      required: false,
+      default: null
+    },
+    depertment: {
+      type: String,
+      required: false,
+      default: null
+    },
+    skills: {
+      type: Array,
+      required: false,
+      default: []
+    },
+    importentFectorNewJobs: {
+      type: Array,
+      required: false,
+      default: []
+    },
+    jobLocaiton: {
+      type: Array,
+      required: false,
+      default: []
+    },
+    jobRemoteLocation: {
+      type: String ,
+      required: false,
+      default: null
+    },
+    visaRequirement :{
+      type: String,
+      required: false,
+      default: null
+    },
+    languages: {
+      type: Array,
+      required: false,
+      default: []
+    },
+    jobStartTimeFrame :{
+      type: String,
+      required: false,
+      default: null
+    },
+    referrdeJobRole :{
+      type: String,
+      required: false,
+      default: null
+    },
+    desiredRoleLavel :{
+      type: String,
+      required: false,
+      default: null
+    },
+    companySizePreffered :{
+      type: String,
+      required: false,
+      default: null
+    },
+    industryInterested :{
+      type: String,
+      required: false,
+      default: null
+    },
+    prefferedTechonology :{
+      type: Array,
+      required: false,
+      default: []
+    },
+    salaryExpectation :{
+      type: String,
+      required: false,
+      default: null
+    },
+    pronouns :{
+      type: String,
+      required: false,
+      default: null
+    },
+    genderIdentaty :{
+      type: String,
+      required: false,
+      default: null
+    },
+    ethnicity :{
+      type: String,
+      required: false,
+      default: null
+    },
+    jobEmailNotificaiton :{
+      type: String,
+      required: false,
+      default: null
+    },
+    howKnowThisWebstie :{
+      type: String,
+      required: false,
+      default: null
+    },
+    aboutMySelfe :{
+      type: String,
+      required: false,
+      default: null
+    },
+
+    
+    isBlocked: {
+      type: Boolean,
+      default: false
+    },
+
     nidNumber: {
       type: Number,
       required: false,
@@ -82,11 +256,7 @@ const userSchema = mongoose.Schema(
       required: false,
       default: null
     },
-    address: {
-      type: String,
-      required: false,
-      default: null
-    },
+
     oneTimeCode: {
       type: String,
       required: false,
