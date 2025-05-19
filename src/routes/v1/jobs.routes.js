@@ -33,5 +33,9 @@ router
         convertHeicToPngMiddleware(UPLOADS_FOLDER_USERS),
         jobController.createApplication);
 
+router
+    .route("/bookmark")
+    .post(auth("common"), jobController.bookmarkJob);
+
 
 module.exports = router;

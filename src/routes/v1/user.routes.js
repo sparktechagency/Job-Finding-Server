@@ -28,5 +28,11 @@ router
   );
 
 
+router
+  .route("/following-company")
+  .post(auth("common"), userController.followCompany);
+
+
+
 
 module.exports = router;

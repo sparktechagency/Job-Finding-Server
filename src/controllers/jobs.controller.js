@@ -1,8 +1,9 @@
 const httpStatus = require("http-status");
 const jobsService = require("../services/jobs.service");
 const response = require("../config/response");
+const catchAsync = require("../utils/catchAsync");
 
-const createJob = (req, res) => {
+const createJob = catchAsync(async (req, res) => {
 
     const body = req.body;
 
@@ -17,7 +18,7 @@ const createJob = (req, res) => {
         );
     }
 
-    const job = jobsService.createJob(req.body);
+    const job = await jobsService.createJob(req.body);
 
     res.status(httpStatus.CREATED).json(
         response({
@@ -27,9 +28,9 @@ const createJob = (req, res) => {
             data: job,
         })
     );
-};
+});
 
-const getJobs = async (req, res) => {
+const getJobs = catchAsync(async (req, res) => {
 
     const jobs = await jobsService.getJobs();
 
@@ -41,9 +42,9 @@ const getJobs = async (req, res) => {
             data: jobs,
         })
     );
-};
+});
 
-const getJobById = async (req, res) => {
+const getJobById = catchAsync(async (req, res) => {
     const { id } = req.params;
     const job = await jobsService.getJobById(id);
 
@@ -67,9 +68,9 @@ const getJobById = async (req, res) => {
             data: job,
         })
     );
-};
+});
 
-const createApplication = async (req, res) => {
+const createApplication = catchAsync(async (req, res) => {
     const body = req.body;
     console.log("createApplication", body);
     if (body.jobPostId == '' || body.userId == '') {
@@ -103,12 +104,38 @@ const createApplication = async (req, res) => {
             data: application,
         })
     );
-}
+});
+const bookmarkJob = catchAsync(async (req, res) => {
+    const { jobId } = req.body;
+    const { _id: id } = req.user;
+
+    const job = await jobsService.bookmarkJob(id, jobId);
+
+    if (!job) {
+        return res.status(httpStatus.NOT_FOUND).json(
+            response({
+                message: "Job not found",
+                status: "FAILED",
+                statusCode: httpStatus.NOT_FOUND,
+            })
+        );
+    }
+
+    res.status(httpStatus.OK).json(
+        response({
+            message: "Job bookmarked successfully",
+            status: "OK",
+            statusCode: httpStatus.OK,
+            // data: job,
+        })
+    );
+});
 
 
 module.exports = {
     createJob,
     getJobs,
     getJobById,
-    createApplication
+    createApplication,
+    bookmarkJob
 };

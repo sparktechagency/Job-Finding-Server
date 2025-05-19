@@ -50,6 +50,21 @@ const sendEmailVerification = async (to, otp) => {
   await sendEmail(to, subject, html);
 };
 
+const sendEmailContact = async (to, titile, message) => {
+  const html = `
+  <body style="background-color: #f3f4f6; padding: 2rem; font-family: Arial, sans-serif; color: #333;">
+    <div
+        style="max-width: 100%;  background-color: #ffffff; padding: 2rem; border-radius: 0.75rem; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); ">
+        <h1 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; color: #7ed957;">${titile}</h1>
+        <p style="color: #4b5563; margin-bottom: 1.5rem;">${message}</p>
+        <p style="color: #4b5563; margin-bottom: 1.5rem;">From ${to}</p>
+    </div>
+</body>
+`;
+  const msg = { from: config.email.from, to, subject: titile, html };
+  await transport.sendMail(msg);
+}
+
 const sendResetPasswordEmail = async (to, otp) => {
   console.log("Password Reset Email", to, otp);
   const subject = "Password Reset Email";
@@ -99,4 +114,5 @@ module.exports = {
   sendResetPasswordEmail,
   sendVerificationEmail,
   sendEmailVerification,
+  sendEmailContact
 };

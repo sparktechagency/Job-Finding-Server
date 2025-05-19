@@ -107,6 +107,25 @@ const isUpdateUser = async (userId, updateBody) => {
   return user;
 };
 
+const followCompany = async (userId, companyId) => {
+  const user = await getUserById(userId);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+  }
+  if (userId === companyId) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "You cannot follow yourself");
+  }
+  if (user.followingCompanies.includes(companyId)) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Already following this company");
+  }
+  if (!user.followingCompanies) {
+    user.followingCompanies = [];
+  }
+  user.followingCompanies.push(companyId);
+  await user.save();
+  return user;
+};
+
 module.exports = {
   createUser,
   queryUsers,
@@ -114,5 +133,6 @@ module.exports = {
   getUserByEmail,
   updateUserById,
   deleteUserById,
-  isUpdateUser
+  isUpdateUser,
+  followCompany
 };

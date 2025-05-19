@@ -150,6 +150,23 @@ const deleteUser = catchAsync(async (req, res) => {
   );
 });
 
+const followCompany = catchAsync(async (req, res) => {
+  const { _id: userId } = req.user;
+  if (!userId) {
+    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+  }
+  const { companyId } = req.body;
+  const user = await userService.followCompany(userId, companyId);
+  res.status(httpStatus.OK).json(
+    response({
+      message: "User Updated",
+      status: "OK",
+      statusCode: httpStatus.OK,
+      data: user,
+    })
+  );
+});
+
 module.exports = {
   createUser,
   getUsers,
@@ -158,4 +175,5 @@ module.exports = {
   updateUser,
   updateProfile,
   deleteUser,
+  followCompany
 };

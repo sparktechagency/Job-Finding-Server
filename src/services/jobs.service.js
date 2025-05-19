@@ -1,5 +1,8 @@
+const httpStatus = require("http-status");
 const Application = require("../models/application.model");
 const Jobs = require("../models/jobs.model");
+const User = require("../models/user.model");
+const ApiError = require("../utils/ApiError");
 
 const createJob = (data) => {
     const create = Jobs.create(data);
@@ -33,10 +36,29 @@ const createApplication = async (data) => {
     return application;
 };
 
+const bookmarkJob = async (userId, jobId) => {
+    const job = await Jobs.findById(jobId);
+    const user = await User.findById(userId);
+
+    if (!job) throw new ApiError(httpStatus.NOT_FOUND, "Job not found");
+    if (!user) throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+
+    // Check if the job is already bookmarked
+    if (user.bookmarkedJobs.includes(job._id)) {
+        throw new ApiError(httpStatus.BAD_REQUEST, "Job already bookmarked");
+    }
+
+    user.bookmarkedJobs.push(job._id);
+    await user.save();
+
+    return job;
+};
+
 
 module.exports = {
     createJob,
     getJobs,
     getJobById,
-    createApplication
+    createApplication,
+    bookmarkJob
 };

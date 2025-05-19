@@ -155,11 +155,11 @@ const userSchema = mongoose.Schema(
       default: []
     },
     jobRemoteLocation: {
-      type: String ,
+      type: String,
       required: false,
       default: null
     },
-    visaRequirement :{
+    visaRequirement: {
       type: String,
       required: false,
       default: null
@@ -169,73 +169,77 @@ const userSchema = mongoose.Schema(
       required: false,
       default: []
     },
-    jobStartTimeFrame :{
+    jobStartTimeFrame: {
       type: String,
       required: false,
       default: null
     },
-    referrdeJobRole :{
+    referrdeJobRole: {
       type: String,
       required: false,
       default: null
     },
-    desiredRoleLavel :{
+    followingCompanies: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
+      default: []
+    },
+    desiredRoleLavel: {
       type: String,
       required: false,
       default: null
     },
-    companySizePreffered :{
+    companySizePreffered: {
       type: String,
       required: false,
       default: null
     },
-    industryInterested :{
+    industryInterested: {
       type: String,
       required: false,
       default: null
     },
-    prefferedTechonology :{
+    prefferedTechonology: {
       type: Array,
       required: false,
       default: []
     },
-    salaryExpectation :{
+    salaryExpectation: {
       type: String,
       required: false,
       default: null
     },
-    pronouns :{
+    pronouns: {
       type: String,
       required: false,
       default: null
     },
-    genderIdentaty :{
+    genderIdentaty: {
       type: String,
       required: false,
       default: null
     },
-    ethnicity :{
+    ethnicity: {
       type: String,
       required: false,
       default: null
     },
-    jobEmailNotificaiton :{
+    jobEmailNotificaiton: {
       type: String,
       required: false,
       default: null
     },
-    howKnowThisWebstie :{
+    howKnowThisWebstie: {
       type: String,
       required: false,
       default: null
     },
-    aboutMySelfe :{
+    aboutMySelfe: {
       type: String,
       required: false,
       default: null
     },
 
-    
+
     isBlocked: {
       type: Boolean,
       default: false
