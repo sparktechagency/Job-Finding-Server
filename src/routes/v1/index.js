@@ -20,7 +20,8 @@ const defaultRoutes = [
   {
     path: "/jobs",
     route: jobRoute,
-  }
+  },
+  
 
 ];
 

@@ -69,10 +69,46 @@ const getJobById = async (req, res) => {
     );
 };
 
+const createApplication = async (req, res) => {
+    const body = req.body;
+    console.log("createApplication", body);
+    if (body.jobPostId == '' || body.userId == '') {
+        return res.status(httpStatus.BAD_REQUEST).json(
+            response({
+                message: "All fields is required",
+                status: "FAILED",
+                statusCode: httpStatus.BAD_REQUEST,
+            })
+        );
+    }
+    if (req.files.cv) {
+        req.body.cv = `/uploads/users/${req.files.cv[0].filename}`;
+    }
+    if (req.files.coverLetter) {
+        req.body.coverLetter = `/uploads/users/${req.files.coverLetter[0].filename}`;
+    }
+    if (req.files.sortVideo) {
+        req.body.sortVideo = `/uploads/users/${req.files.sortVideo[0].filename}`;
+    }
+
+    console.log(body);
+
+    const application = await jobsService.createApplication(body);
+
+    res.status(httpStatus.CREATED).json(
+        response({
+            message: "Application Created Successfully",
+            status: "OK",
+            statusCode: httpStatus.CREATED,
+            data: application,
+        })
+    );
+}
 
 
 module.exports = {
     createJob,
     getJobs,
-    getJobById
+    getJobById,
+    createApplication
 };
