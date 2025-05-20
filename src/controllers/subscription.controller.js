@@ -43,10 +43,8 @@ const updateSubscription = catchAsync(async (req, res) => {
 
 const deleteSubscription = catchAsync(async (req, res) => {
     const result = await subscriptionService.deleteSubscription(req.params.id);
-
     res.status(200).send({
         message: "Subscription Deleted Successfully",
-
     });
 });
 

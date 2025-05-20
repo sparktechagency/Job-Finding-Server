@@ -6,6 +6,7 @@ const docsRoute = require("./docs.routes");
 const jobRoute = require("./jobs.routes");
 const contactRoute = require("./contact.routes");
 const subscriptionRoute = require("./subscription.routes");
+const phoneNumberSmsRoute = require("./phoneSms.routes");
 
 
 const router = express.Router();
@@ -30,6 +31,10 @@ const defaultRoutes = [
   {
     path: "/subscription",
     route: subscriptionRoute,
+  },
+  {
+    path: "/phoneNumberSms",
+    route: phoneNumberSmsRoute,
   }
 
 ];
