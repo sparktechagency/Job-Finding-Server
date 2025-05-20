@@ -9,4 +9,5 @@ module.exports.PrivacyPolicy = require('./privacyPolicy.model');
 module.exports.Support = require('./support.model');
 module.exports.Job = require('./jobs.model');
 module.exports.Application = require('./application.model');
-module.exports.Newslatter = require('./newsletter.model'); 
+module.exports.Newslatter = require('./newsletter.model');
+module.exports.Subscription = require('./subscription.model');
