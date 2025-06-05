@@ -18,12 +18,14 @@ router
   .patch(
     auth("common"),
     validate(userValidation.updateUser),
+
     uploadUsers.fields([
       { name: "image", maxCount: 5 },  // multiple images, up to 5
       { name: "myCv", maxCount: 1 },
       { name: "portfolio", maxCount: 1 }
     ]),
     convertHeicToPngMiddleware(UPLOADS_FOLDER_USERS),
+    
     userController.updateProfile
   );
 
