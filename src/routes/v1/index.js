@@ -36,7 +36,7 @@ const defaultRoutes = [
     path: "/phoneNumberSms",
     route: phoneNumberSmsRoute,
   }
-];
+]; 
 
 const devRoutes = [
   // routes available only in development mode
