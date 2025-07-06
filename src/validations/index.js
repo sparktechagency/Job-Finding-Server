@@ -3,3 +3,4 @@ module.exports.userValidation = require('./user.validation');
 module.exports.jobValidation = require('./jobs.validation');
 module.exports.contactValidation = require('./contact.validation');
 module.exports.subscriptionValidation = require('./subscription.validation');
+module.exports.careerEventValidation = require('./careerevent.validation');

@@ -7,6 +7,8 @@ const jobRoute = require("./jobs.routes");
 const contactRoute = require("./contact.routes");
 const subscriptionRoute = require("./subscription.routes");
 const phoneNumberSmsRoute = require("./phoneSms.routes");
+const careerEventRoute = require("./careerevent.routes");
+const networkingEventRoute = require("./networkingevent.routes");
 
 
 const router = express.Router();
@@ -25,6 +27,14 @@ const defaultRoutes = [
     route: jobRoute,
   },
   {
+    path: "/career-events",
+    route: careerEventRoute,
+  },
+  {
+    path: "/networking-events",
+    route: networkingEventRoute,
+  },
+  {
     path: "/contact",
     route: contactRoute,
   },
@@ -36,7 +46,7 @@ const defaultRoutes = [
     path: "/phoneNumberSms",
     route: phoneNumberSmsRoute,
   }
-]; 
+];
 
 const devRoutes = [
   // routes available only in development mode

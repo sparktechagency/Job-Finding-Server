@@ -11,3 +11,4 @@ module.exports.Job = require('./jobs.model');
 module.exports.Application = require('./application.model');
 module.exports.Newslatter = require('./newsletter.model');
 module.exports.Subscription = require('./subscription.model');
+module.exports.CareerEvent = require('./careerevent.model');
