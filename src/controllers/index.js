@@ -4,4 +4,5 @@ module.exports.jobController = require('./jobs.controller');
 module.exports.contactController = require('./contact.controller');
 module.exports.subscriptionController = require('./subscription.controller');
 module.exports.careerEventController = require('./careerevent.controller');
+module.exports.networkingEventController = require('./networkingevent.controller');
 
